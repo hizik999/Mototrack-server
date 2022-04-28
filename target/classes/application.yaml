@@ -1,0 +1,22 @@
+server:
+  port: 2021
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:db_v1
+
+  h2:
+    console:
+      enabled: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/db.changelog-master.xml
+
+  jpa:
+    generate-ddl: false
+
+    hibernate:
+      ddl-auto: none
+
+    show-sql: false

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2022-4-16--001-users" author="amalyshev">
+        <preConditions>
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="users">
+
+            <column name="id"
+                    type="numeric(19,0)"
+                    autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" deleteCascade="true"/>
+            </column>
+
+            <column name="name"
+                    type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nickname"
+                    type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email"
+                    type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status"
+                    type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

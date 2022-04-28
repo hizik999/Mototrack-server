@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>LibrarySpring</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <!-- Spring-boot-starter-parent - это специальный стартер, который обеспечивает значения по умолчанию Maven.
+         Он также предоставляет раздел dependency-management (управления зависимостями),
+         так что вы можете опустить теги version для общераспространенных зависимостей. -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+    </parent>
+
+    <dependencies>
+
+        <!-- Spring Boot — это проект, целью которого является упрощение создания приложений на основе Spring.
+             Он позволяет наиболее простым способом создать web-приложение,
+             требуя от разработчиков минимум усилий по его настройке и написанию кода -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- H2 — открытая кроссплатформенная СУБД, полностью написанная на языке Java -->
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+
+        <!-- Liquibase - это независимая от базы данных библиотека с открытым исходным кодом для отслеживания,
+             управления и применения изменений схемы базы данных -->
+        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+
+        <!-- Spring Data — дополнительный удобный механизм для взаимодействия с сущностями базы данных,
+             организации их в репозитории, извлечение данных, изменение -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Spring Web MVC — веб фреймворк, основанный на Servlet API и являющийся частью Spring framework. -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- SnakeYaml – это библиотека синтаксического анализа YAML с высокоуровневым
+             API для сериализации и десериализации документов YAML -->
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
+
+        <!-- Проект Lombok — это плагин компилятора, который добавляет в Java новые «ключевые слова»
+             и превращает аннотации в Java-код, уменьшая усилия на разработку
+             и обеспечивая некоторую дополнительную функциональность. -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- Spring Test это одна из библиотек, входящих в Spring Framework.
+             Четыре главных задачи, которые решает библиотека это:
+                1. Управлять Spring IoC контейнерами и их кэшированием между тестами
+                2. Предоставить внедрение зависимостей для тестовых классов
+                3. Предоставить управление транзакциями, подходящее для интеграционных тестов
+                4. Предоставить набор базовых классов чтобы помочь разработчику писать интеграционные тесты -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
