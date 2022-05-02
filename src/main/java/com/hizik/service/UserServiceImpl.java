@@ -64,7 +64,20 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
-    
+    @Transactional
+    @Override
+    public User updateStatus(long id, String status) {
+
+        User user = User.builder()
+                .id(id)
+                .name(userRepository.findById(id).getName())
+                .nickname(userRepository.findById(id).getNickname())
+                .email(userRepository.findById(id).getEmail())
+                .status(status)
+                .build();
+
+        return userRepository.save(user);
+    }
 
     @Transactional
     @Override

@@ -39,11 +39,17 @@ public class UserController {
                               @RequestParam String email,
                               @RequestParam String status){
 
-        User user = userService.update(id, name, nickname, email, status);
+        User user = userService.updateUser(id, name, nickname, email, status);
         return UserDto.toDto(user);
     }
 
+    @PutMapping("/user/status/{id}")
+    public UserDto updateStatus(@PathVariable long id,
+                                @RequestParam String status){
 
+        User user = userService.updateStatus(id, status);
+        return UserDto.toDto(user);
+    }
 
     @GetMapping("/user/{id}")
     public UserDto getUserById(@PathVariable long id){

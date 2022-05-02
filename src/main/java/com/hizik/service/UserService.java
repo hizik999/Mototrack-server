@@ -24,6 +24,11 @@ public interface UserService {
             String status
     );
 
+    User updateStatus(
+            long id,
+            String status
+    );
+
     void deleteById(long id);
 
 }
