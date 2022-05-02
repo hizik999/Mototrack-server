@@ -5,13 +5,12 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="db.changelog/1.0/2022-4-16--001-user.xml"/>
-    <include file="db.changelog/1.0/2022-4-16--002-moto.xml"/>
-
-
-
-    <include file="db.changelog/data/2022-4-16--001-user-data.xml"/>
-    <include file="db.changelog/data/2022-4-16--002-moto-data.xml"/>
-
+    <changeSet id="2022-4-16--001-user-data" author="amalyshev">
+        <loadData tableName="user"
+                  file="db.changelog/data/csv/2022-4-16--001-user-data.csv"
+                  separator=";"
+                  quotchar='"'
+                  encoding="UTF-8"/>
+    </changeSet>
 
 </databaseChangeLog>

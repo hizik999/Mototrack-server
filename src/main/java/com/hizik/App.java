@@ -14,13 +14,13 @@ public class App {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
 //        context.getBean(LibDemoService.class).usersDemo();
 //        context.getBean(LibDemoService.class).motosDemo();
-        context.getBean(LibDemoService.class).insertMotosByUsersStatus();
+//        context.getBean(LibDemoService.class).insertMotosByUsersStatus();
 //        context.close();
 
-        try {
-            Console.main(args);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Console.main(args);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 }

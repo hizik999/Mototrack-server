@@ -1,9 +1,9 @@
 package com.hizik.service;
 
-import com.hizik.domain.Motos;
-import com.hizik.domain.Users;
-import com.hizik.repository.MotosRepository;
-import com.hizik.repository.UsersRepository;
+import com.hizik.domain.Moto;
+import com.hizik.domain.User;
+import com.hizik.repository.MotoRepository;
+import com.hizik.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,21 +15,21 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class LibDemoService {
 
-    private final UsersRepository usersRepository;
-    private final MotosRepository motosRepository;
+    private final UserRepository usersRepository;
+    private final MotoRepository motosRepository;
 
     public void usersDemo(){
 
-        List<Users> usersList = usersRepository.findAll();
+        List<User> usersList = usersRepository.findAll();
         System.out.println("==========Users==========");
 
-        for (Users user : usersList) {
+        for (User user : usersList) {
             System.out.println(user.getName());
         }
 
         System.out.println("========================");
 
-        Users user = Users.builder()
+        User user = User.builder()
                 .name("Andy")
                 .nickname("Scott")
                 .email("andyscott@mail.ru")
@@ -41,7 +41,7 @@ public class LibDemoService {
 
         System.out.println("==========New users==========");
 
-        for (Users user1: usersList) {
+        for (User user1: usersList) {
             System.out.println(user1.getName() + ": " + user1.getStatus());
         }
 
@@ -53,11 +53,11 @@ public class LibDemoService {
     public void motosDemo(){
         insertMotosByUsersStatus();
 
-        List<Motos> motosList = motosRepository.findAll();
-        for (Motos motos : motosList) {
+        List<Moto> motosList = motosRepository.findAll();
+        for (Moto motos : motosList) {
             System.out.println("========Moto========");
             System.out.println(motos.getId() + ":");
-            System.out.println(motos.getUsers().getName() + ", " + motos.getUsers().getStatus());
+            System.out.println(motos.getUser().getName() + ", " + motos.getUser().getStatus());
             System.out.println(motos.getSpeed() + "; " +
                     motos.getLatitude() + "; " +
                     motos.getLongitude() + "; " +
@@ -68,17 +68,18 @@ public class LibDemoService {
 
     }
 
+    @Transactional
     public void insertMotosByUsersStatus(){
 
-        List<Users> usersList = usersRepository.findAll();
+        List<User> usersList = usersRepository.findAll();
         int speed = 100;
-        for (Users user : usersList) {
+        for (User user : usersList) {
 
             if (Objects.equals(user.getStatus(), "moto")) {
 
                 System.out.println("NEW MOTO IS DETECTED");
-                Motos moto1 = Motos.builder()
-                        .users(user)
+                Moto moto1 = Moto.builder()
+                        .user(user)
                         .speed(speed)
                         .latitude(87.4322f)
                         .longitude(98.42324f)
