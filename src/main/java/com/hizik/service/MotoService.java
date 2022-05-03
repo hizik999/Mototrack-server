@@ -9,6 +9,8 @@ public interface MotoService {
 
     Moto insert(Moto moto);
 
+    Moto insert(long idUser, int speed, float latitude, float longitude, float altitude);
+
     List<Moto> getAll();
 
     Moto getById(long id);
@@ -17,7 +19,7 @@ public interface MotoService {
 
     Moto update(
            long id,
-           User user,
+           long idUser,
            int speed,
            float latitude,
            float longitude,

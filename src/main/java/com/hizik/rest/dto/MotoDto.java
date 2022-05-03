@@ -14,17 +14,19 @@ import lombok.NoArgsConstructor;
 public class MotoDto {
 
     private long id;
-    private User user;
+    private UserDto userDto;
     private int speed;
     private float latitude;
     private float longitude;
     private float altitude;
 
+
+
     public static MotoDto toDto(Moto moto){
 
         return new MotoDto(
                 moto.getId(),
-                moto.getUser(),
+                UserDto.toDto(moto.getUser()),
                 moto.getSpeed(),
                 moto.getLatitude(),
                 moto.getLongitude(),
@@ -36,7 +38,7 @@ public class MotoDto {
 
         return new Moto(
                 motoDto.getId(),
-                motoDto.getUser(),
+                UserDto.toDomainObject(motoDto.getUserDto()),
                 motoDto.getSpeed(),
                 motoDto.getLatitude(),
                 motoDto.getLongitude(),
