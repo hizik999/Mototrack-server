@@ -72,6 +72,16 @@ public class MotoController {
         return MotoDto.toDto(moto);
     }
 
+    @PutMapping("/moto/latlonalt/{id}")
+    public MotoDto updateLatLonAlt(@PathVariable long id,
+                                   @RequestParam float lat,
+                                   @RequestParam float lon,
+                                   @RequestParam float alt){
+
+        Moto moto = motoService.updateLatLonAlt(id, lat, lon, alt);
+        return MotoDto.toDto(moto);
+    }
+
     @GetMapping("/moto/distance/{id}")
     public float getDistance(@PathVariable long id,
                            @RequestParam float endLon,

@@ -26,6 +26,13 @@ public interface MotoService {
            float altitude
     );
 
+    Moto updateLatLonAlt(
+            long id,
+            float latitude,
+            float longitude,
+            float altitude
+    );
+
     float findDistance(float startLatitude, float startLongitude, float endLatitude, float endLongitude);
 
     void deleteById(long id);

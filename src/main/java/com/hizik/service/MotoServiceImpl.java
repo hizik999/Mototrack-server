@@ -65,7 +65,6 @@ public class MotoServiceImpl implements MotoService{
     public Moto update(long id, long idUser, int speed, float latitude, float longitude, float altitude) {
 
         User user = userRepository.findById(idUser);
-
         Moto moto = Moto.builder()
                 .id(id)
                 .user(user)
@@ -74,14 +73,31 @@ public class MotoServiceImpl implements MotoService{
                 .longitude(longitude)
                 .altitude(altitude)
                 .build();
-
         return motoRepository.save(moto);
     }
 
+    @Transactional
+    @Override
+    public Moto updateLatLonAlt(long id, float latitude, float longitude, float altitude) {
+
+        User user = motoRepository.findById(id).getUser();
+        Moto moto = Moto.builder()
+                .id(id)
+                .user(user)
+                .speed(motoRepository.findById(id).getSpeed())
+                .latitude(latitude)
+                .longitude(longitude)
+                .altitude(altitude)
+                .build();
+        return motoRepository.save(moto);
+    }
+
+    @Transactional
     @Override
     public float findDistance(float startLatitude, float startLongitude, float endLatitude, float endLongitude) {
 
-        float distance = (float) Math.acos(Math.sin(startLatitude) * Math.sin(endLatitude) + Math.cos(startLatitude) * Math.cos(endLatitude) * Math.cos(startLongitude - endLongitude));
+        float distance = (float) Math.acos(Math.sin(startLatitude) * Math.sin(endLatitude)
+                + Math.cos(startLatitude) * Math.cos(endLatitude) * Math.cos(startLongitude - endLongitude));
         return distance * 6371;
     }
 
