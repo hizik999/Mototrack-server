@@ -78,6 +78,13 @@ public class MotoServiceImpl implements MotoService{
         return motoRepository.save(moto);
     }
 
+    @Override
+    public float findDistance(float startLatitude, float startLongitude, float endLatitude, float endLongitude) {
+
+        float distance = (float) Math.acos(Math.sin(startLatitude) * Math.sin(endLatitude) + Math.cos(startLatitude) * Math.cos(endLatitude) * Math.cos(startLongitude - endLongitude));
+        return distance * 6371;
+    }
+
     @Transactional
     @Override
     public void deleteById(long id) {

@@ -26,6 +26,8 @@ public interface MotoService {
            float altitude
     );
 
+    float findDistance(float startLatitude, float startLongitude, float endLatitude, float endLongitude);
+
     void deleteById(long id);
 
     void deleteByUser(User user);
