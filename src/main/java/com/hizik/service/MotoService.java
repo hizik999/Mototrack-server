@@ -9,7 +9,7 @@ public interface MotoService {
 
     Moto insert(Moto moto);
 
-    Moto insert(long idUser, int speed, float latitude, float longitude, float altitude);
+    Moto insert(long user_id, int speed, float latitude, float longitude, float altitude);
 
     List<Moto> getAll();
 

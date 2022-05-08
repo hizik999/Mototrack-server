@@ -26,9 +26,9 @@ public class MotoServiceImpl implements MotoService{
 
     @Transactional
     @Override
-    public Moto insert(long idUser, int speed, float latitude, float longitude, float altitude) {
+    public Moto insert(long user_id, int speed, float latitude, float longitude, float altitude) {
 
-        User user = userRepository.findById(idUser);
+        User user = userRepository.findById(user_id);
         Moto moto = Moto.builder()
                 .user(user)
                 .speed(speed)

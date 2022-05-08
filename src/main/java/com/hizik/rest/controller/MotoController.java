@@ -34,26 +34,32 @@ public class MotoController {
 
     @PostMapping("/moto")
     public MotoDto insertMoto(
-            @RequestParam long user_id,
-            @RequestParam int speed,
-            @RequestParam float latitude,
-            @RequestParam float longitude,
-            @RequestParam float altitude
+            @RequestParam String user_id,
+            @RequestParam String speed,
+            @RequestParam String latitude,
+            @RequestParam String longitude,
+            @RequestParam String altitude
     ){
+        long user_id1 = Long.valueOf(user_id).longValue();
+        //System.out.println(user_id1);
+        int speed1 = Integer.parseInt(speed);
+        float latitude1 = Float.parseFloat(latitude);
+        float longitude1 = Float.parseFloat(longitude);
+        float altitude1 = Float.parseFloat(altitude);
 
-        Moto moto = motoService.insert(user_id, speed, latitude, longitude, altitude);
+        Moto moto = motoService.insert(user_id1, speed1, latitude1, longitude1, altitude1);
         return MotoDto.toDto(moto);
     }
     
     @PutMapping("/moto/{id}")
     public MotoDto updateMoto(@PathVariable long id,
-                              @RequestParam long idUser,
+                              @RequestParam long user_id,
                               @RequestParam int speed,
                               @RequestParam float latitude,
                               @RequestParam float longitude,
                               @RequestParam float altitude){
 
-        Moto moto = motoService.update(id, idUser, speed, latitude, longitude, altitude);
+        Moto moto = motoService.update(id, user_id, speed, latitude, longitude, altitude);
         return MotoDto.toDto(moto);
     }
 
