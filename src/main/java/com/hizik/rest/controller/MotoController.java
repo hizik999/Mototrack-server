@@ -80,11 +80,15 @@ public class MotoController {
 
     @PutMapping("/moto/latlonalt/{id}")
     public MotoDto updateLatLonAlt(@PathVariable long id,
-                                   @RequestParam float lat,
-                                   @RequestParam float lon,
-                                   @RequestParam float alt){
+                                   @RequestParam String latitude,
+                                   @RequestParam String longitude,
+                                   @RequestParam String altitude){
 
-        Moto moto = motoService.updateLatLonAlt(id, lat, lon, alt);
+        float latitude1 = Float.parseFloat(latitude);
+        float longitude1 = Float.parseFloat(longitude);
+        float altitude1 = Float.parseFloat(altitude);
+
+        Moto moto = motoService.updateLatLonAlt(id, latitude1, longitude1, altitude1);
         return MotoDto.toDto(moto);
     }
 
