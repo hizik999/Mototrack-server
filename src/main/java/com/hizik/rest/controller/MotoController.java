@@ -119,4 +119,11 @@ public class MotoController {
         motoService.deleteById(id);
     }
 
+    @GetMapping("/moto/id")
+    public long getNewId(){
+        List<Moto> list = motoService.getAll();
+        Moto moto = list.get(list.size() - 1);
+        return moto.getId();
+    }
+
 }

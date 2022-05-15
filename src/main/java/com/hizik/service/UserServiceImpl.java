@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService{
 
         return userRepository.findById(id);
     }
-    @Transactional
 
+    @Transactional
     @Override
     public User getByName(String name) {
 

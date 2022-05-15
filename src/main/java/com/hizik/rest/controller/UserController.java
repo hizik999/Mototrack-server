@@ -25,8 +25,8 @@ public class UserController {
     }
 
 
-    @PostMapping("/user")
-    public UserDto insertUser(@RequestBody UserDto userDto){
+    @PostMapping(path = "/user", consumes = "application/x-www-form-urlencoded")
+    public UserDto insertUser(UserDto userDto){
 
         User user = userService.insert(UserDto.toDomainObject(userDto));
         return UserDto.toDto(user);
@@ -62,5 +62,13 @@ public class UserController {
     public void deleteUser(@PathVariable long id){
 
         userService.deleteById(id);
+    }
+
+    @GetMapping("/user/id")
+    public long getNewId(){
+
+        List<User> list = userService.getAll();
+
+        return list.size();
     }
 }
