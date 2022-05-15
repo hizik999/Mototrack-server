@@ -68,7 +68,7 @@ public class UserController {
     public long getNewId(){
 
         List<User> list = userService.getAll();
-
-        return list.size();
+        User user = list.get(list.size() - 1);
+        return user.getId();
     }
 }

@@ -103,6 +103,21 @@ public class MotoServiceImpl implements MotoService{
 
     @Transactional
     @Override
+    public String getNameByMoto(Moto moto) {
+
+        Moto moto1 = motoRepository.findById(moto.getId());
+        return moto1.getUser().getNickname();
+    }
+
+    @Transactional
+    @Override
+    public String getNameByMoto(long id) {
+
+        return motoRepository.findById(id).getUser().getNickname();
+    }
+
+    @Transactional
+    @Override
     public void deleteById(long id) {
 
         motoRepository.deleteById(id);

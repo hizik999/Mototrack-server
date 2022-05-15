@@ -35,6 +35,10 @@ public interface MotoService {
 
     float findDistance(float startLatitude, float startLongitude, float endLatitude, float endLongitude);
 
+    String getNameByMoto(Moto moto);
+
+    String getNameByMoto(long id);
+
     void deleteById(long id);
 
     void deleteByUser(User user);

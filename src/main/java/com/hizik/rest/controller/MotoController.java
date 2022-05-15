@@ -94,14 +94,14 @@ public class MotoController {
 
     @GetMapping("/moto/distance/{id}")
     public float getDistance(@PathVariable long id,
-                           @RequestParam float endLon,
-                           @RequestParam float endLat){
+                           @RequestParam float endLat,
+                           @RequestParam float endLon){
 
         float distance = motoService.findDistance(
                 motoService.getById(id).getLatitude(),
                 motoService.getById(id).getLongitude(),
-                endLon,
-                endLat
+                endLat,
+                endLon
         );
         return distance;
     }
@@ -124,6 +124,14 @@ public class MotoController {
         List<Moto> list = motoService.getAll();
         Moto moto = list.get(list.size() - 1);
         return moto.getId();
+    }
+
+    @GetMapping("/moto/name/{id}")
+    public String getNameByMoto(@PathVariable long id){
+
+//        Moto moto = motoService.getById(id);
+//        return motoService.getNameByMoto(moto);
+        return motoService.getNameByMoto(id);
     }
 
 }
